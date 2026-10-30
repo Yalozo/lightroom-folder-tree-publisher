@@ -21,7 +21,7 @@ files = [(p, p.relative_to(ROOT).as_posix()) for p in sorted(PLUGIN.iterdir())
          if p.suffix in {'.lua', '.png', '.svg', '.txt'}]
 files += [(ROOT / name, name) for name in docs]
 files += [(p, p.relative_to(ROOT).as_posix()) for p in sorted((ROOT / 'docs').glob('USER_GUIDE*.md'))]
-files += [(p, p.relative_to(ROOT).as_posix()) for p in sorted((ROOT / 'docs/screenshots').glob('*.png'))]
+files += [(p, p.relative_to(ROOT).as_posix()) for p in sorted((ROOT / 'docs/screenshots').glob('*.png')) if re.fullmatch(r'0[1-8]-[a-z-]+[.]png', p.name) and not p.stem.endswith('-edited')]
 # Keep the license with the installed plug-in too.
 files.append((ROOT / 'LICENSE', 'FolderTreePublisher.lrplugin/LICENSE.txt'))
 out = ROOT / 'dist'
