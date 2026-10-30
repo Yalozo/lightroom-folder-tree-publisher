@@ -69,11 +69,24 @@ Right-click the published collection and choose **Go to Published Collection** (
 
 In Finder, use list view and expand the folders. Compare the output with the collection's path rules.
 
-This screenshot is a separate example using **`1111` before the hierarchy** and **`2222` after it**, producing a path such as `lr_export/1111/2009/2009-09-08-Egypt/2222/P1020733--5526.jpg`. These numeric folders are custom settings. The earlier collection example instead uses `Portfolio` and no trailing subfolder. The `--5526` suffix is added by the photo-ID option.
+The illustration below uses sample data and matches the **`Portfolio`** prefix from section 4. It is an edited demonstration, not a capture of an actual export. Sidebar details and the home-folder path have been removed.
 
-![Expanded output folder hierarchy and published JPEG files](screenshots/08-finder-result.png)
+```text
+lr_export/
+└── Portfolio/
+    └── Фото/
+        └── 2026/
+            └── Поездка/
+                ├── IMG_001--123.jpg
+                ├── IMG_002--124.jpg
+                └── Clip--125.mov
+```
 
-The video folders near the bottom are collapsed, so this image does not show their contents. Video output depends on the chosen export format. Open each video's destination and check it with a suitable application.
+The `--123`, `--124`, and `--125` suffixes illustrate the filename-ID option. The collection settings preview uses a sample filename without that suffix. No trailing subfolder is configured. MOV is used for this video example; actual output depends on the Lightroom video settings.
+
+![Demonstration of Portfolio/Фото/2026/Поездка with photos and a video](screenshots/08-finder-result.png)
+
+After publishing, check your actual destination and open the video with a suitable application.
 
 ## Troubleshooting
 
