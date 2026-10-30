@@ -1,0 +1,27 @@
+name: Checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python tests/test_localization.py
+      - name: Functional tests (Russian, English, fallback)
+        run: |
+          for language in ru en de; do
+            PLUGIN_TEST_LANGUAGE="$language" python tests/test_plugin.py
+          done
+      - run: python tools/build_release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plugin-release
+          path: |
+            dist/FolderTreePublisher-*.zip
+            dist/FolderTreePublisher-*.sha256
+          if-no-files-found: error
